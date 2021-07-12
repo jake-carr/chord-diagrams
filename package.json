@@ -17,6 +17,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "i": "^0.3.6",
+    "jquery": "^3.6.0",
     "npm": "^7.19.1",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
