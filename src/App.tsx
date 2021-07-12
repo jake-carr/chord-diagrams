@@ -1,10 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import ChordJS from './chords.js';
+import { NotePicker } from './NotePicker';
 import './App.css';
 
 const App: FC = () => {
     const [note, selectNote] = useState('D');
     const [major, toggleQuality] = useState(true);
+
+    const notes: string[] = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
 
     const parser = {
         str: function (uberChord: string) {
@@ -46,11 +49,13 @@ const App: FC = () => {
 
     return (
         <div className="App">
-            <button onClick={() => selectNote('A')}>A</button>
-            <button onClick={() => selectNote('D')}>D</button>
-            <button onClick={() => selectNote('F')}>F</button>
-            <button onClick={() => toggleQuality(!major)}>{major ? 'major' : 'minor'}</button>
-            <div id="target"></div>
+            <div className="row">
+                <NotePicker onSelect={selectNote} value={note} notes={notes} />
+                <button onClick={() => toggleQuality(!major)}>{major ? 'major' : 'minor'}</button>
+            </div>
+            <div className="row">
+                <div id="target"></div>
+            </div>
         </div>
     );
 };

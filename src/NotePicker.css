@@ -1,0 +1,87 @@
+.outer {
+    --hue: 200;
+    --sat: 100%;
+    --light: 50%;
+}
+
+.note-picker {
+    position: relative;
+    margin: 1px;
+    cursor: pointer;
+}
+.note-picker .trigger {
+    background-color: hsl(var(--hue), var(--sat), var(--light));
+    color: hsl(var(--hue), var(--sat), 5%);
+    height: 29px;
+    width: 29px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 29px;
+}
+
+.note-picker .trigger:hover {
+    --light: 65%;
+    background-color: hsl(var(--hue), var(--sat), var(--light));
+}
+
+.expanded-container {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+.expanded-container .boxes {
+    pointer-events: none;
+    width: 100px;
+}
+.expanded-container .box {
+    margin: 0;
+    width: 0px;
+    text-align: center;
+    line-height: 44px;
+}
+.expanded-container.active {
+    opacity: 1;
+}
+.expanded-container.active .boxes {
+    pointer-events: auto;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 400px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.4s ease width;
+    z-index: 999;
+}
+.expanded-container.active .box {
+    background-color: hsl(var(--hue), var(--sat), var(--light));
+    color: hsl(var(--hue), var(--sat), 5%);
+    height: 44px;
+    width: 44px;
+    margin: 5%;
+    transition: 0.4s ease margin, 0.1s ease width, 0.1s ease transform;
+    border-radius: 50%;
+}
+.expanded-container.active .box:hover {
+    --hue: 205;
+    --sat: 80%;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 14px hsl(var(--hue), var(--sat), var(--light));
+    transition: 0.2s ease all;
+    cursor: pointer;
+}
+.dimmer {
+    opacity: 0;
+}
+.dimmer.active {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: black;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease opacity;
+}
