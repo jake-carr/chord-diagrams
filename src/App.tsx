@@ -7,7 +7,7 @@ const App: FC = () => {
     const [note, selectNote] = useState('D');
     const [major, toggleQuality] = useState(true);
 
-    const notes: string[] = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+    const notes: string[] = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'];
 
     const parser = {
         str: function (uberChord: string) {
@@ -35,7 +35,8 @@ const App: FC = () => {
                 if (data[0]) {
                     const { strings, fingering } = data[0];
                     const { str, fingers } = parser;
-                    const chart = ChordJS.generate(note, str(strings), fingers(fingering), 3);
+                    const chordName = `${note}${!major ? ' m' : ''}`;
+                    const chart = ChordJS.generate(chordName, str(strings), fingers(fingering), 4);
                     const container = document.getElementById('target');
                     if (container) {
                         while (container.firstChild) {
@@ -51,10 +52,13 @@ const App: FC = () => {
         <div className="App">
             <div className="row">
                 <NotePicker onSelect={selectNote} value={note} notes={notes} />
-                <button onClick={() => toggleQuality(!major)}>{major ? 'major' : 'minor'}</button>
+                <button className="type-button" onClick={() => toggleQuality(!major)}>
+                    <span id={major ? 'on' : ''}>Major </span>
+                    <span id={!major ? 'on' : ''}>Minor</span>
+                </button>
             </div>
             <div className="row">
-                <div id="target"></div>
+                <div id="target" />
             </div>
         </div>
     );

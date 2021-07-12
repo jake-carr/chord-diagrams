@@ -1,5 +1,5 @@
 .outer {
-    --hue: 200;
+    --hue: 220;
     --sat: 100%;
     --light: 50%;
 }
@@ -11,7 +11,8 @@
 }
 .note-picker .trigger {
     background-color: hsl(var(--hue), var(--sat), var(--light));
-    color: hsl(var(--hue), var(--sat), 5%);
+    border: 2px solid hsl(240, var(--sat), var(--light));
+    color: hsl(var(--hue), var(--sat), 95%);
     height: 29px;
     width: 29px;
     border-radius: 50%;
@@ -57,7 +58,7 @@
 }
 .expanded-container.active .box {
     background-color: hsl(var(--hue), var(--sat), var(--light));
-    color: hsl(var(--hue), var(--sat), 5%);
+    color: hsl(var(--hue), var(--sat), 95%);
     height: 44px;
     width: 44px;
     margin: 5%;
